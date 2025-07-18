@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ song.title }}</title>
+    <link rel="stylesheet" href="{% static 'music/style.css' %}">
+</head>
+<body>
+    <div class="player-container">
+        <div class="player-header">
+            <h1>{{ song.title }}</h1>
+        </div>
+
+        {% if song.cover_image %}
+            <img src="{{ song.cover_image.url }}" alt="{{ song.title }}" width="300" style="border-radius: 15px;">
+        {% else %}
+            <img src="{% static 'music/default_cover.jpg' %}" alt="No cover" width="300" style="border-radius: 15px;">
+        {% endif %}
+
+        <audio controls autoplay style="margin-top: 20px; width: 100%;">
+            <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+            Your browser does not support the

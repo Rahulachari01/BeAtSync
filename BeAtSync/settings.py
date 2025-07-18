@@ -25,11 +25,8 @@ SECRET_KEY = 'django-insecure-8h-5d%%w@*oule*z%sgou01!cf5lrw!pnw^6cl3uu&_+x7ef^k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',  # For accessing from your own computer
-    'localhost',  # For accessing from your own computer
-    '192.168.0.216', # <-- ADD THIS LINE for your mobile/other devices
-]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.0.100']
+
 
 # You can also add '*' during development ONLY if you're frequently
 # changing networks or IPs, but be cautious with this.
@@ -72,7 +69,7 @@ ROOT_URLCONF = 'BeAtSync.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'], # <-- ADD THIS LINE
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,6 +81,7 @@ TEMPLATES = [
         },
     },
 ]
+
 WSGI_APPLICATION = 'BeAtSync.wsgi.application'
 
 
@@ -134,15 +132,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'), # This line is often crucial for project-level static files
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Uncomment and set this for production later
 
 # For media files (uploaded songs/images)
 # settings.py
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media' # Or any path you prefer
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -156,3 +154,5 @@ CHANNEL_LAYERS = {
         'BACKEND': 'channels.layers.InMemoryChannelLayer',
     },
 }
+
+STATIC_ROOT = BASE_DIR / "staticfiles"

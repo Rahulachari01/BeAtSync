@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from .models import Song # Import the Song model
+from .models import Song  # Or your actual model name
 
 def home(request):
-    songs = Song.objects.all() # Get all songs from the database
-    context = {'songs': songs} # Create a context dictionary
-    return render(request, 'music/index.html', context) # Pass the context to the template
+    songs = Song.objects.all()
+    return render(request, 'music/home.html', {'songs': songs})

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Song List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}">
+</head>
+<body>
+    <div class="container home-container">
+        <h1>Available Songs</h1>
+        <div class="songs-grid">
+            {% for song in songs %}
+                <div class="song-card">
+                    <!-- FIXED: This will work only if 'player' URL name exists -->
+                    <a href="{% url 'syncapp:player' song.id %}">
+                        <img src="{{ song.cover_image.url }}" alt="{{ song.title }}">
+                    </a>
+                    <h3>{{ song.title }}</h3>
+                </div>
+            {% empty %}
+                <p>No songs found.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
